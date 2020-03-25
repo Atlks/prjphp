@@ -1,0 +1,214 @@
+﻿ <!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+ <html xmlns="http://www.w3.org/1999/xhtml">
+
+ <head id="Head1" runat="server">
+
+     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+     <title>acc edit-</title>
+     <script src="../js/jquery/3.4.1/jquery.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+     <meta name="description" content="" />
+     <meta name="keywords" content="" />
+     <meta name="generator" content="LBMall 3.0.0" />
+     <link href="images/css/css3.css" rel="stylesheet" type="text/css" />
+     <link href="images/css/css2.css" rel="stylesheet" type="text/css" />
+     <link href="images/css/css.css" rel="stylesheet" type="text/css" />
+     <script type="text/javascript" src="images/js/shopjs.js"></script>
+     <script type="text/javascript">
+         var min = 0; // '<% %>';
+         var bal = '<%=balance %>';
+
+         function val() {
+             var flag = true;
+
+             if (document.getElementById("txt_bank").value == "") {
+                 alert("开户行不能为空");
+                 return false;
+                 throw "err";
+             }
+             if (document.getElementById("txt_name").value == "") {
+                 alert("开户人姓名不能为空");
+                 return false;
+                 throw "err";
+             }
+             if (document.getElementById("txt_code").value == "") {
+                 alert("银行帐号不能为空");
+                 return false;
+                 throw "err";
+             }
+
+
+             if (document.getElementById("txt_money").value == "") {
+                 document.getElementById("msg_money").innerHTML = "<span class='msg_submit'>提现金额不能为空！</span>";
+                 flag = false;
+                 throw "err";
+             } else {
+                 document.getElementById("msg_money").innerHTML = "<em>元</em>";
+                 var moneys = document.getElementById("txt_money").value;
+                 if (moneys / 1 < min / 1) {
+                     document.getElementById("msg_money").innerHTML = "<span class='msg_submit'>提现金额不能少于提现最低限额！</span>";
+                     flag = false;
+                     throw "err";
+                 }
+                 if (moneys / 1 > bal / 1) {
+                     document.getElementById("msg_money").innerHTML = "<span class='msg_submit'>提现金额不能大于账户余额！</span>";
+                     flag = false;
+                     throw "err";
+                 }
+             }
+             // if(document.getElementById("txt_pwd").value==""){
+             //                document.getElementById("msg_pwd").innerHTML="<span class='msg_submit'>提现密码不能为空！</span>";
+             //                flag=false;
+             //            }else{
+             //         document.getElementById("msg_pwd").innerHTML="";
+             //   }
+             if (flag) {
+                 return true;
+             } else {
+                 return false;
+             }
+         }
+
+         function search2() {
+             var texts2 = document.getElementById("ser2").value;
+             var select_v2 = document.getElementById("Select3").value;
+             window.location = "list.aspx?tid=" + select_v2 + "&titlec=" + escape(texts2);
+         }
+     </script>
+ </head>
+
+ <body>
+     <form id="form1" onsubmit="return false;" style="width: 100% !important;">
+
+         <div id="top">
+
+
+             <div id="contenter2">
+                 <div id="contenter">
+                     <script type="text/javascript">
+                         shopLeft();
+                     </script>
+                     <div id="right">
+
+                         <h3 class="hide">
+                             提现申请
+                         </h3>
+
+                         <div class="contenter">
+                             <div style="margin-left:180px;" runat=server id="msg_"></div>
+                             <table cellpadding="0" cellspacing=0 width=100% id="list" runat="server">
+                                 <tr>
+                                     <td class="row"><span class="span-title">账号1：</span></td>
+                                     <td><input name="acc1" type="text" class="input-c form-control" id="acc1"
+                                             runat="server" />&nbsp;<span id="msg_bank"></span></td>
+                                 </tr>
+
+                                 <tr>
+                                     <td class="row"><span class="span-title">账号2：</span></td>
+                                     <td><input name="acc2" type="text" class="input-c form-control" id="acc2"
+                                             runat="server" />&nbsp;<span id="msg_bank"></span></td>
+                                 </tr>
+
+
+                                 <tr>
+                                     <td class="row"><span class="span-title">账号3：</span></td>
+                                     <td><input name="acc3" type="number" class="input-c form-control" id="acc3"
+                                             maxlength=18 runat="server" />&nbsp;<span id="msg_code"></span></td>
+                                 </tr>
+
+                                 <tr>
+                                     <td class="row"><span class="span-title">账号4：</span></td>
+                                     <td><input name="acc4" type="text" class="input-c form-control" id="acc4"
+                                             maxlength=18 runat="server" />&nbsp;<span id="msg_name"><em
+                                                 style="display:none"><br />
+                                                 填写真实姓名或公司名</em></span></td>
+                                 </tr>
+
+                                 <tr>
+                                     <td class="row"><span class="span-title">账号5：</span></td>
+                                     <td><input name="acc5" type="text" class="input-c form-control" id="acc5"
+                                             runat="server" />&nbsp;<span id="msg_money"
+                                             runat=server>&nbsp;<em></em></span></td>
+                                 </tr>
+                                 <tr>
+                                     <td colspan=2 class="row4" align="center" style="padding-left:0px">
+
+                                         <Button ID="Button3" style="height00: 21px" onclick="btn_clik()"
+                                             class="btn btn-primary">保存</button>
+
+
+
+
+
+
+                                     </td>
+                                 </tr>
+                             </table>
+                             <span style="color: red; line-height:23px; display:none">
+                                 注意：提现金额不能少于提现最低限额，提现最低限额为：
+                                 1 元
+                             </span>
+                         </div>
+                     </div>
+                     <div class="both">
+                     </div>
+                     <div id="footer">
+
+                     </div>
+                     <div class="copyright" runat="server" id="copr"></div>
+                 </div>
+             </div>
+     </form>
+
+
+
+
+     <Script>
+         //save acclist
+         function btn_clik() {
+             console.log("btnnnn.......");
+
+             $.get("bankcard_edit.php?" + $("form").serialize(), function(data, status) {
+                 console.log("Data: " + data + "nStatus: " + status);
+                 alert("ok");
+             
+             });
+         }
+         //$("Button4").click();
+
+         $.getJSON("../acc/acc_query.php?", function(data, status) {
+             console.log("Data: " + data + "nStatus: " + status);
+
+             $("#balanceSpan").text(data.available_balance);;
+         });
+     </script>
+     <script defer>
+         $.getJSON("../bankcard/bank_list_mer.php", function(data, status) {
+             console.log("Data: " + data + "nStatus: " + status);
+             // var data = eval('(' + data + ')');
+             // data=var objs = eval('(' + data + ')'); data;
+
+             var bklst = JSON.parse(data.ext_json);
+             for (var i = 1; i < 6; i++) {
+
+                 //     var v = data.ext_json["acc" + i];
+                 var v = bklst["acc" + i];
+
+                 $("#acc" + i).val(v);
+             }
+
+         }).fail(function(xhr, status, error) {
+             alert("status: " + status + "    error:" + error + "  xhr.status" + xhr.status + " " + xhr
+                 .statusText)
+         });
+
+         // .done(function (result, status, xhr) {
+         //     alert(result)
+         // })
+     </script>
+
+ </body>
+
+ </html>

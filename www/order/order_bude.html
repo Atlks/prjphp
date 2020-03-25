@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>table模块快速使用</title>
+  <link href="./style.css" rel="stylesheet">
+  <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+</head>
+<body>
+ <blockquote class="layui-elem-quote" style="font-size:14px;padding:8px;">今日成功交易总额：<span id="pay_amount" class="label label-info">0元</span>  今日成功交易笔数：<span id="pay_count" class="label label-info">0</span>
+            今日实际到账：<span id="account_amount" class="label label-info">0元</span> 今日失败笔数：<span id="error_count" class="label label-danger">0</span>
+          </blockquote>
+<table id="demo" lay-filter="test"></table>
+ 
+<script src="./layui/layui.js"></script>
+<script>
+
+var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+httpRequest.open('GET', 'http://www.pay915.com/query.php', true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+httpRequest.onreadystatechange = function () {
+	if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+		var str = httpRequest.responseText;//获取到json字符串，还需解析
+		var obj = JSON.parse(str);
+		document.getElementById('pay_count').innerText = obj.pay_count;
+		document.getElementById('pay_amount').innerText = obj.pay_amount + '元';
+		document.getElementById('account_amount').innerText = obj.account_amount + '元';
+		document.getElementById('error_count').innerText = obj.error_count;
+		
+	}
+};
+		
+
+layui.use('table', function(){
+  var table = layui.table;
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 512
+    ,url: '/order/order_bude_api.php?filter=bude'  //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'key', title: 'ID', width:90,  fixed: 'left'}
+	  ,{field: 'ddlx', title: '类型', width:60}
+	  ,{field: 'out_trade_id', title: '订单号', width:220}
+	  ,{field: 'mer_trade_id', title: '商户订单号', width:220}
+	  ,{field: 'memberid', title: '商户编号', width:110}
+	  ,{field: 'amount', title: '交易金额', width:100}
+      ,{field: 'rate', title: '手续费', width:110}
+      ,{field: 'actualamount', title: '实际金额', width:100} 
+      ,{field: 'applydate', title: '提交时间', width: 160}
+      ,{field: 'successdate', title: '成功时间', width: 160}
+      ,{field: 'bankname', title: '支付银行', width: 110}
+      ,{field: 'status', title: '支付状态', width: 110}
+      ,{field: 'op', title: '操作', width: 100}
+    ]]
+  });
+  
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, p, ol, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form,img,input, select, button, textarea, iframe, table, th, td { margin: 0; padding: 0; }
+img { border:none; vertical-align: middle; }
+ol,ul,li { list-style-type: none; }
+h1, h2, h3, h4, h5, h6, table, th, td  { font-weight:normal; font-size:100%; }
+body, input, select, button, textarea { font-size:14px; font-family:microsoft yahei; }
+a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+.normal, em, i { font-style:normal; font-weight:normal; }
+body { background:#f8f7fa; color:#2f2f2f; line-height:23px; min-width:300px; overflow-x: hidden;}
+table { border-collapse:collapse; border-spacing:0; }
+p { word-wrap:break-word; }
+a { color:#2f2f2f; text-decoration:none; }
+table { border-collapse:collapse; }
+input[type="button"]{ -webkit-appearance:none; outline:none;}
+.clearfix { display:block; zoom:1; }
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; font-size:0; }
+*html .clearfix { height:1%; }
+.fl { float:left; }
+.fr { float:right; }
+.tl { text-align:left; }
+.tc { text-align:center; }
+.tr { text-align:right; }
+.f10{ font-size:10px;}
+.f11{ font-size:11px;}
+.f12{ font-size:12px;}
+.f13{ font-size:13px;}
+.f14 { font-size:14px; }
+.f16 { font-size:16px; }
+.f15 { font-size:15px; }
+.f18 { font-size:18px; }
+.f20 { font-size:20px; }
+.f24 { font-size:24px; }
+.f28 { font-size:28px; }
+.f30 { font-size:30px; }
+.f32 { font-size:32px; }
+.undis { display:none }
+.dis { display:block; }
+.diss { display:inline-block; }
+/*common style*/
+.w100 { width:100%; }
+.m-auto { margin-left:auto; margin-right:auto; }
+.l-19 { line-height:19px; }
+.l-15 { line-height:15px; }
+.p10 { padding:10px; }
+.p15 { padding:15px; }
+.p20 { padding:20px; }
+.pl5 { padding-left:5px; }
+.pl10 { padding-left:10px; }
+.pl15 { padding-left:15px; }
+.pl20 { padding-left:20px; }
+.pt5 { padding-top:5px; }
+.pt10 { padding-top:10px; }
+.pt15 { padding-top:15px; }
+.pt20 { padding-top:20px; }
+.pb5 { padding-bottom:5px; }
+.pb10 { padding-bottom:10px; }
+.pb15 { padding-bottom:15px; }
+.pb20 { padding-bottom:20px; }
+.pr5 { padding-right:5px; }
+.pr10 { padding-right:10px; }
+.pr15 { padding-right:15px; }
+.pr20 { padding-right:20px; }
+.ml5 { margin-left:5px; }
+.ml10 { margin-left:10px; }
+.ml15 { margin-left:15px; }
+.ml20 { margin-left:20px; }
+.mr5 { margin-right:5px; }
+.mr10 { margin-right:10px; }
+.mr15 { margin-right:15px; }
+.mr20 { margin-right:20px; }
+.mt5 { margin-top:5px; }
+.mt10 { margin-top:10px; }
+.mt15 { margin-top:15px; }
+.mt20 { margin-top:20px; }
+.mb5 { margin-bottom:5px; }
+.mb8 { margin-bottom:8px; }
+.mb10 { margin-bottom:10px; }
+.mb15 { margin-bottom:15px; }
+.mb20 { margin-bottom:20px; }
+.bddd { border:1px solid #ddd; }
+.beee { border:1px solid #eee; }
+/*Link style*/
+.link-green { color:#14ae67; }
+.link-blue { color:#2489ce; }
+.link-grey { color:#999; }
+.link-grey333 { color:#333; }
+.link-grey666 { color:#666; }
+.link-black { color:#fff; }
+.link-yel { color: #14ae67;font-size: 14px;}
+.link-red{ color:#f0453c;}
+.link-1{ color:#5f5f5f;}
+.link-2{ color:#8a8a8a;}
+.link-3{ color:#2f2f2f;}
+.blank{ height:46px;}
+.br-circle{border-radius:50%;}
+.b_tb{ background:#fff; border-top:1px solid #eee; border-bottom:1px solid #eee;}
+.b_tb_d9{background:#fff; border-top:1px solid #d9d9d9; border-bottom:1px solid #d9d9d9;}
+.commenturl{cursor: pointer;}
+.disabled{background:#ADADAD !important;}
+body div.mask{position:fixed; background:url("../images/loading.gif") center no-repeat; left:0; top:0; right:0; bottom:0; overflow:hidden; z-index:999999;}
+body div.mask1{position:fixed; background:#000000 url("../images/loading.gif") center no-repeat; color:#ffffff; background-size:48px; opacity: .3; filter:alpha(opacity=30);left:0; top:0; right:0; bottom:0; overflow:hidden; z-index:999999;}
+.text-indent{text-indent: 2em;}
+body div.mask_noImg{position:fixed;/*  background-color:#999999; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5; */ left:0; top:0; right:0; bottom:0; overflow:hidden; z-index:999;}
+.noWrapEllipsis{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+
+
+
+

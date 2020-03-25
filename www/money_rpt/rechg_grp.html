@@ -1,0 +1,202 @@
+﻿<!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML 4.0 Transitional//EN"> <HTML>
+
+<HEAD>
+	<link href="./style.css" rel="stylesheet">
+	<link rel="stylesheet" href="./layui/css/layui.css" media="all">
+	<script src="./layui/layui.js"></script>
+
+	<title>帐户管理</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,
+			maximum-scale=1.0, user-scalable=0">
+	<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+	<meta content="C#" name="CODE_LANGUAGE">
+	<meta content="JavaScript" name="vs_defaultClientScript">
+	<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+	<script language="jscript">
+		function update_zt(id) {
+			document.Form1.Hidden_id.value = id;
+			document.Form1.Hidden_zt.value = "updatezt";
+			window.Form1.submit();
+		}
+
+		function showdelete() {
+			var check = confirm('系统提醒您：确实要删除此记录吗？');
+			if (check) {
+				document.Form1.deletehid.value = '1';
+				check = false;
+			} else {
+				document.Form1.deletehid.value = '0';
+			}
+		}
+
+		function ViewSBrecord(id) //查看收报详细信息
+		{}
+
+		function wd_tw() //验证期刊号
+		{}
+	</script>
+	<Style>
+		.提现成功 {
+			color: green;
+		}
+
+		.提现失败 {
+			color: red;
+		}
+	</style>
+</HEAD>
+
+<body>
+
+	<script src="../js/jquery/3.4.1/jquery.js"></script>
+
+	<ul class="nav nav-pills" style="display:none">
+		<li role="presentation"><a href="#">Home</a></li>
+		<li role="presentation"><a href="../userManaModule/list_user.htm">用户管理</a></li>
+		<li role="presentation" class="active"><a href="../tyesye/tisye_manag.html">提现管理</a></li>
+	</ul>
+	<br>
+	<form id="Form1" method="get" onsubmit="return false;">
+		<FONT face="宋体">
+			<P align="center">
+				<TABLE id="" cellSpacing="0" cellPadding="0" width="100%" borderColorLight="#ffffff" border="0">
+
+					<TR>
+						<TD style="HEIGHT: 15px">
+							<P align="left" style="display: none">
+
+								<asp:textbox id="txtTime1" onfocus="setday(this)" runat="server" Width="70px">
+								</asp:textbox>至
+								<asp:textbox id="txtTime2" onfocus="setday(this)" runat="server" Width="70px">
+								</asp:textbox>&nbsp;(20070701)
+								<Button id="btnSSearch" onclick="btnclk()">查询</Button>
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD vAlign="top">
+							<DIV style="FONT-SIZE: 14px" align="center" class="table-responsive">
+								<!--  total title -->
+								<style>
+									/*
+										body {background-color: powderblue;}
+										h1   {color: blue;}
+										p    {color: red;}
+										
+										*/
+									p tr.datatr td {
+										color: #666666;
+										font-family: Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
+
+										font-size: 14px;
+									}
+
+									.labelinfox {
+										padding-bottom: 2px;
+										line-height: 16px;
+										font-size: 14px;
+										background-color: #266173;
+									}
+
+									.label-info｛ padding-bottom:2px;
+									line-height:16px;
+
+									｝
+								</style>
+								<blockquote class="layui-elem-quote"
+									style="font-size:14px;padding:8px;align:left;text-align: left;">
+									日期： <input name="date" type="date" class="" id="date" />
+									<button onclick="btnclk()">查询</button>
+									<div style="display: none; align:left; text-align: left;">订单总数：<span
+											id="tisye_count" class="label label-info labelinfox"></span>
+										结算金额：<span id="tisye_total" class="label label-info labelinfox"></span>元
+										手续费：<span id="tisye_total_shosywfei"
+											class="label label-info labelinfox"></span>元
+
+									</div>
+								</blockquote>
+
+								<!---  total title  end-->
+
+								<script>
+									function btnclk() {
+
+ binddata("date="+$("#date").val());
+
+									}
+									/* $(function() {
+										// do something
+										console.log("js do logding.................")
+										$.getJSON("../mercht/mer_info.php?id=", function(result, status) {
+											console.log("mer_info.php ajax ret:" + result);
+console.log("feilv手续费率:"+result.feilv手续费率);
+											 setDAta(result.feilv手续费率);
+										});
+									}); */
+									function setDAta(feilv手续费率) {
+										$.getJSON("../statistics/statics_query.php?", function(data, status) {
+											console.log("Data: " + data + "nStatus: " + status);
+											//	$("#todayRecharge").text(77);
+											$("#tisye_count").text(data.tisye_count);
+											$("#tisye_total").text(data.tisye_total);
+											//num.toFixed(2)
+											//	data.tisye_total=9600;
+											var alreadyPayRate已经支付存款费率 = 1 - feilv手续费率;
+											console.log("alreadyPayRate已经支付存款费率" + alreadyPayRate已经支付存款费率);
+											$("#tisye_total_shosywfei").text((data.tisye_total / alreadyPayRate已经支付存款费率 * feilv手续费率)
+												.toFixed(2));;
+										});
+									}
+								</script>
+								<table id="demo" lay-filter="test"></table>
+
+								<script>
+								   
+									function binddata(qrystr) {
+										layui.use('table', function() {
+											var table = layui.table;
+											//第一个实例
+											table.render({
+												elem: '#demo',
+												height: 512,
+												url: 'rechg_grp.php?'+qrystr //数据接口
+													,
+												page: true //开启分页
+													,
+												cols: [
+													[ //表头
+														{
+															field: 'mername',
+															title: '用户名称',
+															templet: '<div>{{d.mername}} {{d.uname}} {{d.app_id}}</div>'
+														}, {
+															field: 'ysj原始金额',
+															title: '原始充值金额'
+														}, {
+															field: 'sjczje实际充值金额',
+															title: '实际充值金额'
+														}, {
+															field: 'ssf手续费',
+															title: '手续费'
+														}, {
+															field: 'feilv手续费率',
+															title: '手续费率'
+														}
+													]
+												]
+											});
+										});
+									}
+
+									  binddata("");
+								</script>
+			</P>
+		</FONT>
+	</form>
+
+</body>
+
+</HTML>

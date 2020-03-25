@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://demo.mycodes.net/houtai/layui_shop/frame.html -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<!-- Google Chrome Frame也可以让IE用上Chrome的引擎: -->
+	<meta name="renderer" content="webkit">
+	<!--国产浏览器高速模式-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="穷在闹市">
+	<!-- 作者 -->
+	<meta name="revised" content="穷在闹市.v3, 2019/05/01">
+	<!-- 定义页面的最新版本 -->
+	<meta name="description" content="网站简介">
+	<!-- 网站简介 -->
+	<meta name="keywords" content="搜索关键字，以半角英文逗号隔开">
+	<title>PAY915</title>
+
+	<!-- 公共样式 开始 -->
+	<link rel="shortcut icon" href="https://demo.mycodes.net/houtai/layui_shop/images/favicon.ico">
+	<link rel="bookmark" href="https://demo.mycodes.net/houtai/layui_shop/images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="./index/base.css">
+	<link rel="stylesheet" type="text/css" href="./index/iconfont.css">
+	<script type="text/javascript" src="./index/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./index/layui.css">
+	<!--[if lt IE 9]>
+	      	<script src="framework/html5shiv.min.js"></script>
+	      	<script src="framework/respond.min.js"></script>
+	    <![endif]-->
+	<script type="text/javascript" src="./index/layui.js"></script>
+	<!-- 滚动条插件 -->
+	<link rel="stylesheet" type="text/css" href="./index/jquery.mCustomScrollbar.css">
+	<script src="./index/jquery-ui-1.10.4.min.js"></script>
+	<script src="./index/jquery.mousewheel.min.js"></script>
+	<script src="./index/jquery.mCustomScrollbar.min.js"></script>
+	<script src="./index/cframe.js"></script><!-- 仅供所有子页面使用 -->
+	<!-- 公共样式 结束 -->
+
+	<link rel="stylesheet" type="text/css" href="./index/frameStyle.css">
+	<script type="text/javascript" src="./index/frame.js"></script>
+
+	<link id="layuicss-layer" rel="stylesheet" href="./index/layer.css" media="all">
+</head>
+
+<body>
+	<!-- 左侧菜单 - 开始 -->
+	<div class="frameMenu" style="height: 888px;">
+		<div class="logo">
+			<img src="./index/logo.png">
+			<div class="logoText">
+				<h1>PAY915</h1>
+				<p>闪8支付</p>
+			</div>
+		</div>
+		<div class="menu mCustomScrollbar _mCS_1 mCS_no_scrollbar" style="height: 778px;">
+			<div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;"
+				tabindex="0">
+				<div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+					style="position:relative; top:0; left:0;" dir="ltr">
+					<ul>
+						<li>
+							<a class="menuFA" onclick="menuCAClick(&#39;http://www.pay915.com/business.html&#39;,this)"
+								style="background-color: rgb(40, 42, 50); color: rgb(255, 255, 255); border-width: 0px;"><i
+									class="iconfont icon-zhishi left"></i>商戶中心</a>
+						</li>
+						<li>
+							<a class="menuFA" onclick="menuCAClick(&#39;http://www.pay915.com/order/&#39;,this)"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>所有订单</a>
+						</li>
+
+						<li>
+							<a class="menuFA"
+								onclick="menuCAClick(&#39;http://www.pay915.com/order/index_pay.html&#39;,this)"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>完成订单</a>
+						</li>
+						<li>
+							<a class="menuFA" onclick="menuCAClick(&#39;http://www.pay915.com/channel/&#39;,this)"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>管道费率</a>
+						</li>
+
+						<li>
+							<a class="menuFA" onclick="menuCAClick(&#39;/adm_tisye/tisye_manag.html&#39;,this)"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>提现审核</a>
+
+						</li>
+
+							<li>
+							<a class="menuFA" onclick="menuCAClick(&#39;/money_rpt/rechg_grp.html&#39;,this)"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>充值报表</a>
+
+						</li>
+
+						<li style="display:none">
+							<a class="menuFA" onclick="menuCAClick(&#39;/mercht/mer_info_edit.htm&#39;,this)"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>商户信息</a>
+
+						</li>
+
+						<li>
+							<a class="menuFA" onclick="exit()"
+								style="color: rgb(194, 194, 194); background-color: transparent; border-width: 0px;"><i
+									class="iconfont icon-huojian left"></i>退出</a>
+
+						</li>
+
+					</ul>
+
+
+						<script>
+				function exit()
+				{
+					document.cookie="";
+					clearAllCookie();
+					window.top.location="login.htm";
+				}
+
+				
+//清除所有cookie函数
+			function clearAllCookie() {
+				var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+				if(keys) {
+					for(var i = keys.length; i--;)
+						document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+				}
+			}
+				</script>
+				</div>
+				<div id="mCSB_1_scrollbar_vertical"
+					class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical"
+					style="display: none;">
+					<div class="mCSB_draggerContainer">
+						<div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
+							style="position: absolute; min-height: 30px; height: 0px; top: 0px;">
+							<div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+						</div>
+						<div class="mCSB_draggerRail"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 左侧菜单 - 结束 -->
+
+	<div class="main" style="width: 1670px; height: 888px;">
+		<!-- 头部栏 - 开始 -->
+
+		<!-- 头部栏 - 结束 -->
+
+		<!-- 核心区域 - 开始 -->
+		<div class="frameMain" style="height: 828px;">
+			<div class="title" id="frameMainTitle">
+				<span><i class="iconfont icon-xianshiqi"></i>商戶中心</span>
+			</div>
+			<div class="con" style="height: 788px;">
+				<iframe id="mainIframe" src="http://www.pay915.com/business.html" scrolling="no"
+					style="height: 788px;"></iframe>
+			</div>
+		</div>
+		<!-- 核心区域 - 结束 -->
+	</div>
+	<script type="text/javascript">
+		(function() {
+			var s = "_" + Math.random().toString(36).slice(2);
+			document.write('<div style="" id="' + s + '"></div>');
+			(window.slotbydup = window.slotbydup || []).push({
+				id: "u4923786",
+				container: s
+			});
+		})();
+	</script>
+	<div style="" id="_l2250t0z6ej"></div>
+	<script type="text/javascript" src="./index/c.js" async="async" defer="defer"></script>
+
+</body>
+
+</html>

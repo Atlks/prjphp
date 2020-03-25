@@ -1,0 +1,83 @@
+<select name="org开户机构" class="input-c form-control" id="txt_bank">
+	<option value="国家开发银行">国家开发银行</option>
+	<option value="中国进出口银行">中国进出口银行</option>
+	<option value="中国农业发展银行">中国农业发展银行</option>
+	<option value="中国银行">中国银行</option>
+	<option value="工商银行">中国工商银行</option>
+	<option value="建设银行">中国建设银行</option>
+	<option value="农业银行">中国农业银行</option>
+	<option value="光大银行">中国光大银行</option>
+	<option value="民生银行">中国民生银行</option>
+	<option value="中信银行">中信银行</option>
+	<option value="交通银行">交通银行</option>
+	<option value="华夏银行">华夏银行</option>
+	<option value="招商银行">招商银行</option>
+	<option value="兴业银行">兴业银行</option>
+	<option value="广发银行">广发银行</option>
+	<option value="平安银行">平安银行</option>
+	<option value="上海浦东发展银行">上海浦东发展银行</option>
+	<option value="恒丰银行">恒丰银行</option>
+	<option value="浙商银行">浙商银行</option>
+	<option value="渤海银行">渤海银行</option>
+	<option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+	<option value="城市商业银行">城市商业银行</option>
+	<option value="北京银行">北京银行</option>
+	<option value="天津银行">天津银行</option>
+	<option value="河北银行">河北银行</option>
+	<option value="沧州银行">沧州银行</option>
+	<option value="唐山市商业银行">唐山市商业银行</option>
+	<option value="承德银行">承德银行</option>
+	<option value="张家口市商业银行">张家口市商业银行</option>
+	<option value="秦皇岛银行">秦皇岛银行</option>
+	<option value="邢台银行">邢台银行</option>
+	<option value="廊坊银行">廊坊银行</option>
+	<option value="保定银行">保定银行</option>
+	<option value="邯郸银行">邯郸银行</option>
+	<option value="衡水银行">衡水银行</option>
+	<option value="晋商银行">晋商银行</option>
+	<option value="大同市商业银行">大同市商业银行</option>
+	<option value="长治银行">长治银行</option>
+	<option value="其他</">其他</option>
+</select>
+	
+	<script src="jquery/3.4.1/jquery.js"></script>
+	    <script src="jsonpath.jquery.js"></script>
+		<Script>
+		
+		var accList = [{
+				'accnum': '83457834758947598', 'holdername': '李一', 'bank': '中国银行', 'branch': '上海分行xxx支行'
+			},
+			{
+				'accnum': '22222222222',
+				'holdername': '王er',
+				'bank': '农业银行',
+				'branch': '上海分行农业银行第一支行'
+			},
+			{
+				'accnum': '287488347958940',
+				'holdername': '李三',
+				'bank': '招商银行',
+				'branch': '上海分行招商银行第2支行'
+			},
+			{
+				'accnum': '33344444444444444444',
+				'holdername': '李四',
+				'bank': '工商银行',
+				'branch': '上海分行工商银行第5支行'
+			},
+			{
+				'accnum': '5555555555555555555555',
+				'holdername': '李五',
+				'bank': '建设银行',
+				'branch': '上海分行建设银行第555支行'
+			}
+			]
+
+			var path = $.JSONPath({ data: accList, keepHistory: false });
+	var rs = path.query('$[?(@.accnum=="5555555555555555555555")]');  // filter all books cheapier
+		alert(rs);
+		$("#txt_bank").val(rs[0].bank);
+	//		$("#txt_bank").val("工商银行");
+		</script>
+	
+	

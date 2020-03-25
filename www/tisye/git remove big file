@@ -1,0 +1,13 @@
+000atibek tmp mycc v2 s55
+
+
+"C:\Program Files\Git\bin\git.exe" filter-branch --force --prune-empty --index-filter 'git rm -rf --cached --ignore-unmatch "000atibek tmp mycc v2 s55"' --tag-name-filter cat -- --all
+
+
+
+
+
+"C:\Program Files\Git\mingw64\bin\git.exe" filter-branch --force --prune-empty --index-filter 'git rm -rf --cached --ignore-unmatch "000atibek tmp mycc v2 s55"' --tag-name-filter cat -- --all
+
+
+"C:\Program Files\Git\bin\git.exe" push --force --all

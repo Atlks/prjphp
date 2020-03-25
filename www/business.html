@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <meta charset="utf-8">
+   <title>websocket(用户1)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <script type="text/javascript">
+         function WebSocketTest()
+         {
+            if ("WebSocket" in window)
+            {
+               console.log("您的浏览器支持 WebSocket!");
+               
+               // 打开一个 web socket
+                var ws = new WebSocket("ws://65.49.145.72:8080/");
+               ws.onopen = function()
+               {
+                  var obj = { "MerchantID":"1", "ChannelID":"1","CMD":"GETORCODE", "amount":document.getElementById('chatBox').value};
+                  ws.send(JSON.stringify(obj));
+                  console.log("数据发送中...");
+                  document.getElementById('Bridge').style.display='none'
+               };
+                
+               ws.onmessage = function (evt) 
+               { 
+                  var received_msg = evt.data;
+                  console.log(received_msg)
+				  var iframe = document.getElementById("iframe2");
+				  let obj_ = JSON.parse(received_msg)
+				  iframe.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + obj_["url"]
+               };
+                
+               ws.onclose = function()
+               { 
+                  document.getElementById('Bridge').style.display='block'
+               };
+            }
+            
+            else
+            {
+               // 浏览器不支持 WebSocket
+               alert("您的浏览器不支持 WebSocket!");
+            }
+         }
+      </script>
+        
+   </head>
+   <body>
+    <div class="col-sm-6">
+      <ul id="chat-list"></ul>
+
+       <div class="form-group">
+         <p></p>
+         <textarea id="chatBox" placeholder="输入金额 例如1.00,请输入角分" class="col-sm-2 form-control" rows="1" style="margin-bottom:10px"></textarea>
+         <button type="button" onclick="WebSocketTest()"  class="btn btn-primary" id="Bridge" style="float: left;margin-right: 10px">产生支付二维码</button>
+      </div>
+		<iframe  id="iframe2" src="/mercht/mer_dasbord_welkm.htm" frameBorder="0" width="100%" height="800" scrolling="no" ></iframe>
+		
+      </div>
+   </body>
+</html>

@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+    <title>提现申请-</title>
+    <script src="../js/jquery/3.4.1/jquery.js"></script>
+    <script src="../js/jsonpath.jquery.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="generator" content="LBMall 3.0.0" />
+    <link href="images/css/css3.css" rel="stylesheet" type="text/css" />
+    <link href="images/css/css2.css" rel="stylesheet" type="text/css" />
+    <link href="images/css/css.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="images/js/shopjs.js"></script>
+    <script type="text/javascript">
+        var min = 100; // '<% %>';
+        var bal = '<%=balance %>';
+
+        function val() {
+            var flag = true;
+            // if (document.getElementById("txt_bank").value == "") {
+            //     alert("开户行不能为空"); return false;
+            //     throw "err";
+            // }
+            // if (document.getElementById("txt_name").value == "") {
+            //     alert("开户人姓名不能为空"); return false; throw "err";
+            // }
+            // if (document.getElementById("txt_code").value == "") {
+            //     alert("银行帐号不能为空"); return false; throw "err";
+            // }
+            if (document.getElementById("txt_money").value == "") {
+                document.getElementById("msg_money").innerHTML = "<span class='msg_submit'>提现金额不能为空！</span>";
+                flag = false;
+                throw "err";
+            } else {
+                document.getElementById("msg_money").innerHTML = "<em>元</em>";
+                var moneys = document.getElementById("txt_money").value;
+                if (moneys / 1 < min / 1) {
+                    document.getElementById("msg_money").innerHTML = "<span class='msg_submit'>提现金额不能少于提现最低限额！</span>";
+                    flag = false;
+                    throw "err";
+                }
+                if (moneys / 1 > bal / 1) {
+                    document.getElementById("msg_money").innerHTML = "<span class='msg_submit'>提现金额不能大于账户余额！</span>";
+                    flag = false;
+                    throw "err";
+                }
+            }
+            // if(document.getElementById("txt_pwd").value==""){
+            //                document.getElementById("msg_pwd").innerHTML="<span class='msg_submit'>提现密码不能为空！</span>";
+            //                flag=false;
+            //            }else{
+            //         document.getElementById("msg_pwd").innerHTML="";
+            //   }
+            if (flag) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function search2() {
+            var texts2 = document.getElementById("ser2").value;
+            var select_v2 = document.getElementById("Select3").value;
+            window.location = "list.aspx?tid=" + select_v2 + "&titlec=" + escape(texts2);
+        }
+    </script>
+</head>
+
+<body>
+    <form id="form1" onsubmit="return false;" style="width: 100% !important;">
+
+        <div id="top">
+
+            <div id="contenter2">
+                <div id="contenter">
+                    <script type="text/javascript">
+                        shopLeft();
+                    </script>
+                    <div id="right">
+
+                        <h3 class="hide">
+                            提现申请
+                        </h3>
+
+                        <div class="contenter">
+                            <style>
+                                .redfont {
+                                    color: red;
+                                }
+
+                                .bulecolor {
+                                    color: blue;
+                                }
+
+                                .orgcolor {
+                                    color: coral;
+                                }
+
+                                #titlexx {
+                                    background-color: darkgreen;
+                                    width: 5px;
+                                    height: 30px;
+                                }
+
+                                .tips {
+                                    font-size: 17.5px;
+                                    font-family: "Helvetica Neue", Helvetica, "PingFang SC", 微软雅黑, Tahoma, Arial, sans-serif;
+                                }
+                            </style>
+                            <div class="tips"
+                                style=" line-height: 22px; font-size: 17.5px; height: 74px; background-color:#f0f0f0; line-height: 15px; text-align: top; align-content:top;">
+                                <div style="float: left; display:inline-block;height: 100%;" id="titlexx"></div>
+                                <div style="line-height: 22px;display:inline-block; padding: 15px;height: 100%;">
+                                    <div>
+                                        <span class="redfont">可提现：
+                                            <span id="balanceSpan"></span>元
+                                        </span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <span class="orgcolor">结算方式:T+0 </span>
+                                    </div>
+                                    <div>
+                                        <span class="redfont">最低提现100元</span>
+                                        ， <span class="bulecolor"> 单笔最高50000元</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <style>
+                                @media (min-width: 700px) {
+
+                                    #ta1 {
+                                        width: 700px;
+                                    }
+
+                                }
+
+                                #ta1 td {
+                                    padding-bottom: 12px;
+
+                                }
+
+                                td.lable {}
+
+                                .lablex {
+                                    width: 100px;
+                                }
+                            </style>
+
+                            <table id="ta1" cellpadding="0" cellspacing=0 width=id="list" runat="server">
+
+                                <tr>
+
+                                    <td colspan=2>
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="row label labelx" width="100px"><span class="span-title">账户：</span></td>
+                                    <td>
+
+                                        <select name="acc" class="input-c form-control" id="accList_selectCtrl"
+                                            onchange="acc_chg()">
+
+                                        </select>
+
+                                        <input style="display:none" name="acc_txt" type="number"
+                                            class="input-c form-control" id="txt_code" maxlength=18
+                                            runat="server" /><span id="msg_code"></span>
+
+                                        <script>
+                                            function acc_chg() {
+                                                var acc = $("#accList_selectCtrl").val();
+                                                var path = $.JSONPath({
+                                                    data: accList,
+                                                    keepHistory: false
+                                                });
+                                                var pathSql = '$[?(@.accnum=="@accnum@")]';
+                                                pathSql = pathSql.replace("@accnum@", acc);
+                                                var rs = path.query(pathSql); // filter all books cheapier
+                                                var accObj = rs[0];
+                                                console.log(accObj);
+                                                $("#txt_bank").val(accObj.bank);
+                                                $("#brach网点名称").val(accObj.branch);
+                                                $("#name_ctrl").val(accObj.holdername);
+                                            }
+                                        </script>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="row label labelx"><span class="span-title">开户银行：</span></td>
+                                    <td><input style="display: none;" type="text" runat="server" /><span
+                                            id="msg_bank"></span>
+                                        <select name="org开户机构" class="input-c form-control" id="txt_bank">
+                                            <option value="国家开发银行">国家开发银行</option>
+                                            <option value="中国进出口银行">中国进出口银行</option>
+                                            <option value="中国农业发展银行">中国农业发展银行</option>
+                                            <option value="中国银行">中国银行</option>
+                                            <option value="工商银行">中国工商银行</option>
+                                            <option value="建设银行">中国建设银行</option>
+                                            <option value="农业银行">中国农业银行</option>
+                                            <option value="光大银行">中国光大银行</option>
+                                            <option value="民生银行">中国民生银行</option>
+                                            <option value="中信银行">中信银行</option>
+                                            <option value="交通银行">交通银行</option>
+                                            <option value="华夏银行">华夏银行</option>
+                                            <option value="招商银行">招商银行</option>
+                                            <option value="兴业银行">兴业银行</option>
+                                            <option value="广发银行">广发银行</option>
+                                            <option value="平安银行">平安银行</option>
+                                            <option value="上海浦东发展银行">上海浦东发展银行</option>
+                                            <option value="恒丰银行">恒丰银行</option>
+                                            <option value="浙商银行">浙商银行</option>
+                                            <option value="渤海银行">渤海银行</option>
+                                            <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                                            <option value="城市商业银行">城市商业银行</option>
+                                            <option value="北京银行">北京银行</option>
+                                            <option value="天津银行">天津银行</option>
+                                            <option value="河北银行">河北银行</option>
+                                            <option value="沧州银行">沧州银行</option>
+                                            <option value="唐山市商业银行">唐山市商业银行</option>
+                                            <option value="承德银行">承德银行</option>
+                                            <option value="张家口市商业银行">张家口市商业银行</option>
+                                            <option value="秦皇岛银行">秦皇岛银行</option>
+                                            <option value="邢台银行">邢台银行</option>
+                                            <option value="廊坊银行">廊坊银行</option>
+                                            <option value="保定银行">保定银行</option>
+                                            <option value="邯郸银行">邯郸银行</option>
+                                            <option value="衡水银行">衡水银行</option>
+                                            <option value="晋商银行">晋商银行</option>
+                                            <option value="大同市商业银行">大同市商业银行</option>
+                                            <option value="长治银行">长治银行</option>
+                                            <option value="其他</">其他</option>
+                                        </select></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="row label labelx"><span class="span-title">网点名称：</span></td>
+                                    <td><input name="brach网点名称" type="text" class="input-c form-control" id="brach网点名称"
+                                            runat="server" /><span id="msg_bank"></span></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="row label labelx"><span class="span-title">姓名：</span></td>
+                                    <td><input style="display: none;" type="text" class="input-c form-control" id=""
+                                            maxlength=18 runat="server" /><span id="msg_name"><em
+                                                style="display:none"><br />
+                                                填写真实姓名或公司名</em></span>
+                                        <select name="name" class="input-c form-control" id="name_ctrl">
+
+                                        </select>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="row label labelx"><span class="span-title">申请提现金额：</span></td>
+                                    <td><input required name="amt金额" type="number" min="100" max="50000"
+                                            class="input-c form-control" id="txt_money" runat="server" /> <span
+                                            id="msg_money" runat=server><em></em></span></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="row label labelx"><span class="span-title">提现密码：</span></td>
+                                    <td><input required name="tisyePwd" type="password" min="100" max="500"
+                                            class="input-c form-control" id="tisyePwd" /> <span id="msg_money"
+                                            runat=server><em></em></span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2 class="row4" align="center" style="padding-left:0px">
+
+                                        <Button ID="Button3" style="height00: 21px" onclick="btn_clik()"
+                                            class="btn btn-primary">申请提现</button>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <span style="color: red; line-height:23px; display:none">
+                                注意：提现金额不能少于提现最低限额，提现最低限额为：
+                                1 元
+                            </span>
+                        </div>
+                    </div>
+                    <div class="both">
+                    </div>
+                    <div id="footer">
+
+                    </div>
+                    <div class="copyright" runat="server" id="copr"></div>
+                </div>
+            </div>
+    </form>
+
+    <script defer>
+        accList = null;
+        $.getJSON("../bankcard/bank_list_mer.php", function(data, status) {
+            console.log("Data: " + data + "nStatus: " + status);
+            var bklst = JSON.parse(data.accs);
+            accList = bklst;
+            for (var i = 0; i < 6; i++) {
+                var jo = bklst[i];
+                if (!jo)
+                    continue;
+                var optionstring = "<option value=\"" + jo.accnum + "\" >" + jo.accnum + "</option>";
+                $("#accList_selectCtrl").append(optionstring);
+                var optionstring2 = "<option value=\"" + jo.holdername + "\" >" + jo.holdername + "</option>";
+                $("#name_ctrl").append(optionstring2);
+            }
+            acc_chg();
+        }).fail(function(xhr, status, error) {
+            alert("status: " + status + "    error:" + error + "  xhr.status" + xhr.status + " " + xhr
+                .statusText)
+        });
+        // .done(function (result, status, xhr) {
+        //     alert(result)
+        // })
+    </script>
+
+    <script defer>
+        function btn_clik() {
+            console.log("btnnnn.......");
+            var tisye_cyar = parseInt($("#txt_money").val());
+            var bal_avial = parseInt($("#balanceSpan").text());
+            if (tisye_cyar > bal_avial) {
+                alert("提现金额不能大于可用余额");
+                return;
+            }
+            //requie tisyepwd
+            if (!$("#tisyePwd")[0].validity.valid) {
+                // 如果校验失败，显示一个自定义错误
+                //  error.innerHTML = "I expect an e-mail, darling!";
+                // error.className = "error active";
+                // 还需要阻止表单提交事件，以取消数据传送
+                //  event.preventDefault();
+                return;
+            }
+            if (val())
+                $.get("tisye.php?" + $("form").serialize(), function(data, status) {
+                    console.log("Data: " + data + "nStatus: " + status);
+                    alert("ok");
+                    $("#txt_bank").val("");
+                    $("#txt_code").val("");
+                    $("#form1")[0].reset();
+                     getBls();;
+                }).fail(function(xhr, status, error){
+                    alert(xhr.responseText);
+                   // alert(error);
+
+                });
+        }
+        //$("Button4").click();
+        function getBls()
+        {
+  $.getJSON("../acc/acc_query.php?", function(data, status) {
+            console.log("Data: " + data + "nStatus: " + status);
+            $("#balanceSpan").text(data.available_balance);
+        });
+        }
+        getBls();
+      
+    </script>
+
+</body>
+
+</html>
